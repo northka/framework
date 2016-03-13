@@ -1,0 +1,29 @@
+{
+  "name": "framework",
+  "version": "1.0.0",
+  "description": "personal node framework",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/northka/framework.git"
+  },
+  "keywords": [
+    "node",
+    "redux",
+    "webpack",
+    "react",
+    "redis"
+  ],
+  "author": "northka.chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/northka/framework/issues"
+  },
+  "homepage": "https://github.com/northka/framework#readme",
+  "dependencies": {
+    "koa": "^1.2.0"
+  }
+}
