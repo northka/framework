@@ -8,6 +8,7 @@ let  koa = require('koa');
 let  koaRouter = require('koa-router')();
 let  favicon = require('koa-favicon');//网站图标
 let  nunjucks = require('koa-nunjucks-render');//模板引擎
+let  compress = require('koa-compress'); // 压缩
 
 
 
@@ -51,5 +52,23 @@ app.use(favicon(path.resolve(__dirname,'favicon.ico')));
 router(koaRouter, app);
 app.use(koaRouter.routes());
 
+app.use(compress({
+    threshold: 2048,
+    flush: require('zlib').Z_SYNC_FLUSH
+}));
+
+
+//webpack
+if(debug){
+    let webpackDevMiddleware = require('koa-webpack-dev-middleware')
+    let webpack = require('webpack');
+    let webpackConf = require('./webpack.config');
+    app.use(webpackDevMiddleware(webpack(webpackConf({debug:debug})), webpackConf.devServer))
+}
+
 
 app.listen(8000);
+
+
+
+

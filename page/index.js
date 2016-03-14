@@ -7,9 +7,6 @@
 //load 3rd模块
 
 
-
-
-
 module.exports=function *(){
     yield this.render('index',{title:"hello world"});
 };
