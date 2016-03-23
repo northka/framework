@@ -1,3 +1,132 @@
-body {
-  background-color: #003366
+@import "ext.scss";
+.nav-group-buy{
+  width:100%;
+  height: 2.06rem;
+  background-color: #F6F8FA;
+  @include center-flex;
+}
+.group-buy-ul{
+  align:top
+}
+.group-buy-item{
+  display: inline-block;
+}
+.group-buy-first{
+  .line{
+    display: none;
+  }
+}
+.group-buy-current{
+  .line{
+    float: left;
+    width: 1.66rem;
+    height: .04rem;
+    margin-top: .22rem;
+    background-color: #46C33B;
+  }
+  .group-buy-node{
+    width: .48rem;
+    float: left;
+    .group-buy-icon{
+      width:.48rem;
+      height: .48rem;
+      background-size: .48rem .48rem;
+      background-image: url("../img/order_icon_progressbar_sucesscircle_green@2x.png");
+
+    }
+    .group-buy-tips{
+      display: flex;
+      padding-top: 8px;
+      font-size:14px;
+      color: #222;
+      word-break: keep-all;
+      white-space: nowrap;
+      justify-content: center;
+    }
+  }
+}
+.group-buy-done{
+  .line{
+    float: left;
+    width: 1.66rem;
+    height: .04rem;
+    margin-top: .22rem;
+    background-color: #46C33B;
+  }
+  .group-buy-node{
+    width: .48rem;
+    float: left;
+    .group-buy-icon{
+      width:.48rem;
+      height: .48rem;
+      background-size: .48rem .48rem;
+      background-image: url("../img/order_icon_progressbar_circle_green@2x.png");
+
+    }
+    .group-buy-tips{
+      display: flex;
+      padding-top: 8px;
+      font-size:14px;
+      color:#585c64;
+      word-break: keep-all;
+      white-space: nowrap;
+      justify-content: center;
+    }
+  }
+}
+
+.group-buy-todo{
+  .line{
+    float: left;
+    width: 1.66rem;
+    height: .04rem;
+    margin-top: .22rem;
+    background-color: #E8E8E8;
+  }
+  .group-buy-node{
+    width: .24rem;
+    float: left;
+    .group-buy-icon{
+      width:.24rem;
+      height: .24rem;
+      margin: .12rem 0;
+      background-size: .24rem .24rem;
+      background-image: url("../img/order_icon_progressbar_circle_gray@2x.png");
+    }
+    .group-buy-tips{
+      display: flex;
+      padding-top: 8px;
+      font-size:14px;
+      color:#98989f;
+      word-break: keep-all;
+      white-space: nowrap;
+      justify-content: center;
+    }
+  }
+}
+
+.group-buy-banner{
+  .group-buy-msg{
+    margin: .3rem;
+    font-size: .24rem;
+    color:#E47600;
+    text-align: justify;
+  }
+  &:after{
+    content:"";
+    display: block;
+    width: 100%;
+    border-bottom:1px solid #D3D3D3 ;
+    transform: scaleY(.5);
+  }
+}
+
+.group-buy-fail{
+  width:100%;
+  height: 2.06rem;
+  background-color: #F6F8FA;
+  font-size: .4rem;
+  color:#222;
+  line-height: 2.06rem;
+  text-align: center;
 }

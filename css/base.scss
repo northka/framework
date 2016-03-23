@@ -1,0 +1,229 @@
+html {
+  -ms-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  font-size: 50px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  color: #222;
+  font-size: 12px;
+  background-color: #fff;
+  -webkit-overflow-scrolling: touch;
+  min-height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden],
+template {
+  display: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+a {
+  color: #555555;
+  text-decoration: none;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+ul,
+li {
+  list-style: none outside none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  vertical-align: middle;
+  border: 0;
+}
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+input[type="text"],
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+  border: none;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  height: auto;
+}
+
+legend {
+  padding: 0;
+  border: 0;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+optgroup {
+  font-weight: bold;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0px;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+  font-family: PingFang-SC-Regular,'Helvetica Neue',Helvetica,'microsoft yahei',sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+form,
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol,
+li,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none outside none;
+}
+
+h1,
+h2,
+h3 {
+  font-size: 14px;
+  color: #404040;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: green;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: green;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: green;
+}
+
+input::input-placeholder,
+textarea::input-placeholder {
+  color: green;
+}

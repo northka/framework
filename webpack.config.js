@@ -73,6 +73,16 @@ module.exports = (opt)=>{
         },
         module:{
            loaders:[
+               {
+                   test: /\.(jpe?g|png|gif|svg)$/i,
+                   loaders: [
+                       'image?{bypassOnDebug: true, progressive:true, \
+                           optimizationLevel: 3, pngquant:{quality: "65-80", speed: 4}}',
+                       // url-loader更好用，小于65KB的图片会自动转成dataUrl，
+                       // 否则则调用file-loader，参数直接传入
+                       'url?limit=65000&name=img/[hash:8].[name].[ext]'
+                   ]
+               },
                {test: /\.css$/, loader: cssConfig.cssLoader},
                {test: /\.scss$/, loader: cssConfig.scssLoader},
                {test:/\.jsx?$/, exclude: /node_modules/,loader: 'babel?presets[]=react,presets[]=es2015'}

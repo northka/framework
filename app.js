@@ -9,15 +9,18 @@ let  koaRouter = require('koa-router')();
 let  favicon = require('koa-favicon');//网站图标
 let  nunjucks = require('koa-nunjucks-render');//模板引擎
 let  compress = require('koa-compress'); // 压缩
+let  open = require('open');
 
 
 
 //  load Primary Library
 let  path = require('path');
+let  util = require('util');
 
 
 // load project file
 let  router = require('./router/router');  //路由
+let  mongodb = require('./mongodb');
 
 //initial value
 let app = koa();
@@ -67,7 +70,36 @@ if(debug){
 }
 
 
-app.listen(8000);
+////mongo数据库连接
+//function mongodbInsert(doc){
+//    mongodb.connect()
+//        .then(function(db){
+//            db.collection('tests')
+//            .insertOne(doc,function(err,result){
+//                if(err){
+//                    console.error(err);
+//                }else{
+//                    //console.info(result);
+//                }
+//            })
+//        });
+//}
+
+//setTimeout(function(){
+//    for(var i = 0; i < 100000; i++){
+//        mongodbInsert({
+//            name:111,
+//            num:Math.random()*10000
+//        });
+//        console.log(i);
+//    };
+//},1000);
+
+
+app.listen(8000,()=>{
+    let url = util.format('http://%s:%d', 'localhost', 8000);
+    open(url);
+});
 
 
 

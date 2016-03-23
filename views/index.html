@@ -1,5 +1,44 @@
 {% include "./component/head.html" %}
 <body>
+<div class="nav-group-buy">
+    <ul class="group-buy-ul">
+        <li class="group-buy-item group-buy-first group-buy-done">
+            <div class="line"></div>
+            <div class="group-buy-node">
+                <div class="group-buy-icon"></div>
+                <p class="group-buy-tips">抱团中</p>
+            </div>
+
+        </li><li class="group-buy-item group-buy-current">
+            <div class="line"></div>
+            <div class="group-buy-node">
+                <div class="group-buy-icon"></div>
+                <p class="group-buy-tips">抱团成功</p>
+            </div>
+
+        </li><li class="group-buy-item group-buy-todo">
+            <div class="line"></div>
+            <div class="group-buy-node">
+                <div class="group-buy-icon"></div>
+                <p class="group-buy-tips">待发货</p>
+            </div>
+
+        </li>
+    </ul>
+</div>
+<div class="group-buy-banner">
+    <p class="group-buy-msg">
+        还差3人成团,邀请小伙伴一起来抱团,成团后我们会立即安排发货成团后我们会立即安排发货
+    </p>
+</div>
+<div class="group-buy-fail">
+    抱团失败,已退款
+</div>
+<div class="group-buy-banner">
+    <p class="group-buy-msg">
+        改团在规定时间内未达成成团要求,唯品会已发起退款。
+    </p>
+</div>
 <script src ="index.js"></script>
 </body>
 </html>
