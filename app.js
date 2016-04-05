@@ -20,7 +20,7 @@ let  util = require('util');
 
 // load project file
 let  router = require('./router/router');  //路由
-let  mongodb = require('./mongodb');
+//let  mongodb = require('./mongodb');
 
 //initial value
 let app = koa();
@@ -98,7 +98,6 @@ if(debug){
 
 app.listen(8000,()=>{
     let url = util.format('http://%s:%d', 'localhost', 8000);
-    open(url);
 });
 
 

@@ -12,6 +12,8 @@ let HtmlWebpackPlugin = require("html-webpack-plugin");
 
 let path = require('path');
 
+let UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+
 //config
 let views = path.resolve(process.cwd(), 'views');
 let assets = 'assets';
@@ -32,7 +34,8 @@ let setCss =(debug,plugins)=>{
     if(debug){
         // 开发阶段，css直接内嵌
         cssConfig.cssLoader = 'style!css';
-        cssConfig.scssLoader = 'style!css!sass'
+        cssConfig.scssLoader = 'style!css!sass';
+
     }else {
         cssConfig.cssLoader = ExtractTextPlugin.extract('style', 'css?minimize'); // enable minimize
         cssConfig.scssLoader = ExtractTextPlugin.extract('style', 'css?minimize', 'sass');
@@ -45,6 +48,9 @@ let setCss =(debug,plugins)=>{
                 allChunks: false
             })
         );
+
+        //js uglyfy
+        plugins.push(new UglifyJsPlugin())
     }
     return cssConfig;
 };
@@ -88,6 +94,8 @@ module.exports = (opt)=>{
                {test:/\.jsx?$/, exclude: /node_modules/,loader: 'babel?presets[]=react,presets[]=es2015'}
            ]
         },
+        plugins:plugins
+        ,
         devServer: {
             hot: true,
             noInfo: false,

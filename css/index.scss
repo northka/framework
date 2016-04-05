@@ -11,14 +11,12 @@
 .group-buy-item{
   display: inline-block;
 }
-.group-buy-first{
-  .line{
-    display: none;
-  }
-}
+
 .group-buy-current{
-  .line{
+  &:before{
+    content: "";
     float: left;
+    display: block;
     width: 1.66rem;
     height: .04rem;
     margin-top: .22rem;
@@ -27,7 +25,9 @@
   .group-buy-node{
     width: .48rem;
     float: left;
-    .group-buy-icon{
+    &:before{
+      content: "";
+      display: block;
       width:.48rem;
       height: .48rem;
       background-size: .48rem .48rem;
@@ -45,10 +45,17 @@
     }
   }
 }
+.group-buy-item.group-buy-first{
+  &:before{
+    display: none;
+  }
+}
 .group-buy-done{
-  .line{
+  &:before{
+    content: "";
     float: left;
-    width: 1.66rem;
+    display: block;
+    width: 1.76rem;
     height: .04rem;
     margin-top: .22rem;
     background-color: #46C33B;
@@ -56,7 +63,9 @@
   .group-buy-node{
     width: .48rem;
     float: left;
-    .group-buy-icon{
+    &:before{
+      content: "";
+      display: block;
       width:.48rem;
       height: .48rem;
       background-size: .48rem .48rem;
@@ -76,9 +85,11 @@
 }
 
 .group-buy-todo{
-  .line{
+  &:before{
+    content: "";
     float: left;
-    width: 1.66rem;
+    display: block;
+    width: 1.76rem;
     height: .04rem;
     margin-top: .22rem;
     background-color: #E8E8E8;
@@ -86,7 +97,9 @@
   .group-buy-node{
     width: .24rem;
     float: left;
-    .group-buy-icon{
+    &:before{
+      content: "";
+      display: block;
       width:.24rem;
       height: .24rem;
       margin: .12rem 0;
@@ -129,4 +142,31 @@
   color:#222;
   line-height: 2.06rem;
   text-align: center;
+}
+.traffic-light{
+  .light{
+    display: inline-block;
+    background: url(//b.vimage1.com/2016/03/31/909/14594260404499.jpg) no-repeat 0 0;
+    background-size: auto 100%;
+    overflow: hidden;
+    width:(140px / 2);
+    height:(328px / 2);
+
+    &.red{
+      background-position: 0,0;
+    }
+    &.yellow{
+      background-position: -78px , 0;
+    }
+    &.green{
+      background-position: -156px , 0;
+    }
+  }
+}
+
+.u-slider-container{
+  width: 100%;
+  .slider-item-img{
+    width: 100%;
+  }
 }
