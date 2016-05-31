@@ -10,6 +10,7 @@ let glob = require('glob');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let HtmlWebpackPlugin = require("html-webpack-plugin");
 
+
 let path = require('path');
 
 let UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
@@ -29,7 +30,7 @@ let getPages = ()=>{
     return entryPages;
 };
 
-let setCss =(debug,plugins)=>{
+let setCss = (debug,plugins)=>{
     let cssConfig = {};
     if(debug){
         // 开发阶段，css直接内嵌
@@ -38,7 +39,7 @@ let setCss =(debug,plugins)=>{
 
     }else {
         cssConfig.cssLoader = ExtractTextPlugin.extract('style', 'css?minimize'); // enable minimize
-        cssConfig.scssLoader = ExtractTextPlugin.extract('style', 'css?minimize', 'sass');
+        cssConfig.scssLoader = ExtractTextPlugin.extract('style', 'css?minimize!sass');
         plugins.push(
             new ExtractTextPlugin('css/[contenthash:8].[name].min.css', {
                 // 当allChunks指定为false时，css loader必须指定怎么处理
@@ -50,21 +51,50 @@ let setCss =(debug,plugins)=>{
         );
 
         //js uglyfy
-        plugins.push(new UglifyJsPlugin())
+        plugins.push(new UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }))
     }
     return cssConfig;
 };
-module.exports = (opt)=>{
+
+let setJsp = (debug,plugins)=>{
+    if(!debug){
+        let viewsPath = path.resolve(process.cwd(),'views');
+        let views = glob.sync(viewsPath + '/*.jsp');
+
+        views.forEach(function (filePath){
+            let fileName = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'));
+            let conf = {
+                template: filePath,
+                filename: fileName + '.jsp',
+                inject:'body',
+                chunks:fileName,
+                minify:{    //压缩HTML文件
+                    removeComments:true,    //移除HTML中的注释
+                    removeCommentsFromCDATA:true,
+                    collapseWhitespace:false    //删除空白符与换行符
+                }
+            };
+
+            plugins.push(new HtmlWebpackPlugin(conf))
+        })
+    }
+}
+module.exports =(opt)=>{
     let option = opt ||{};
 
 
-    let debug = opt.debug !== undefined ? opt.debug : true;
+    let debug = option.debug !== undefined ? option.debug : true;
     let publicPath = '';
     let plugins = [];
 
 
     let pages = getPages();
     let cssConfig = setCss(debug,plugins);
+    setJsp(debug,plugins);
 
 
 
@@ -78,7 +108,8 @@ module.exports = (opt)=>{
             publicPath: publicPath
         },
         module:{
-           loaders:[
+
+            loaders:[
                {
                    test: /\.(jpe?g|png|gif|svg)$/i,
                    loaders: [
@@ -89,9 +120,13 @@ module.exports = (opt)=>{
                        'url?limit=65000&name=img/[hash:8].[name].[ext]'
                    ]
                },
+               {
+                   test: /\.(woff|eot|ttf|woff2)$/i,
+                   loader: 'url?limit=10000&name=fonts/[hash:8].[name].[ext]'
+               },
                {test: /\.css$/, loader: cssConfig.cssLoader},
                {test: /\.scss$/, loader: cssConfig.scssLoader},
-               {test:/\.jsx?$/, exclude: /node_modules/,loader: 'babel?presets[]=react,presets[]=es2015'}
+               {test:/\.jsx?$/, exclude: /node_modules/,loaders: ['babel?presets[]=react,presets[]=es2015','eslint-loader']}
            ]
         },
         plugins:plugins
@@ -110,3 +145,5 @@ module.exports = (opt)=>{
 
     return configure;
 };
+
+

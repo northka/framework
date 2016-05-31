@@ -29,7 +29,7 @@ let debug = process.env.NODE_ENV;
 
 //template setting
 app.use(nunjucks('views', {
-    ext: '.html',
+    ext: '.jsp',
     noCache: process.env.NODE_ENV === 'development',
     throwOnUndefined: true,
     filters: {
@@ -94,6 +94,8 @@ if(debug){
 //        console.log(i);
 //    };
 //},1000);
+
+var cp = require('child_process');
 
 
 app.listen(8000,()=>{

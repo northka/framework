@@ -170,3 +170,34 @@
     width: 100%;
   }
 }
+.sign-dialog-container{
+  position: relative;
+  width:400px;
+  height: 400px;
+  background-color: blue;
+  text-align:center;
+}
+.sign-dialog-title{
+  margin: 0 auto;
+  color:#fff;
+}
+.sign-calender-container{
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  ul{
+    width: 100%;
+  }
+}
+.sign-item{
+  width:70px;
+  height:70px;
+  border:1px solid #fff;
+  display: inline-block;
+  list-style-type:none;
+  vertical-align:top;
+}
+.sign-last-item{
+  width: 140px;
+  height: 70px;
+}

@@ -1,4 +1,6 @@
-{% include "./component/head.html" %}
+<html>
+    <head>
+    </head>
 <body>
 <div id="container"></div>
 <script src ="index.js"></script>
